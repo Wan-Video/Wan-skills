@@ -1,85 +1,93 @@
 # Wan-skills
-> AI Agent Skills for Wan — 让你的 AI Agent 轻松调用 Wan 的 AIGC 能力。
+> AI Agent Skills for Wan — Enable your AI Agent to easily leverage Wan's AIGC capabilities.
 ---
-## 🌟 核心能力
-**Wan-skills** 是一组面向 AI Agent 的技能包（Skills），通过调用API接口的方式赋予 Agent 相关 AIGC 能力。
+## 🌟 Core Capabilities
+**Wan-skills** is a suite of skills designed for AI Agents, empowering them with AIGC capabilities through API calls.
 
-**技能列表**
+**Skills List**
 
-| 技能 | 描述 | 脚本 |
-|------|------|------|
-| **wan2.7-image-skill** | 通过wan2.7-image模型的图像生成和编辑能力进行创作 | `image-generation-editing.py` `file_to_oss.py` `parse_resolution.py` `check_wan_task_status.py` |
+| name | description | scripts | refenence |
+|------|------|------|------|
+| **wan2.7-image-skill** | Create content using the image generation and editing capabilities of the wan2.7-image model. | `image-generation-editing.py` `file_to_oss.py` `parse_resolution.py` `check_wan_task_status.py` | `common.md` `image-generation-editing.md` |
 
-技能列表持续更新中。。。
+Continuously update the skill list with a variety of new skills.
 
 ---
 
-## 🚀 快速开始
+## 🚀 Quick Start
 
-### Step 1: 获取 API Key
+### Step 1: Get API Key
 
-**前提条件：** 需要阿里云账号
+**Prerequisites:** An Alibaba Cloud account is required
 
-1. **注册阿里云账号**
-   - 访问 https://www.aliyun.com/
-   - 完成账号注册和实名认证
+1. **Sign up for an Alibaba Cloud account**
+   - visit https://www.aliyun.com/
+   - Complete account registration
 
-2. **开通百炼服务**
-   - 访问 https://bailian.console.aliyun.com/
-   - 开通百炼服务
+2. **Activate ModelStudio Service**
+   - visit https://modelstudio.console.aliyun.com/
+   - Activate the ModelStudio service
 
-3. **创建 API Key**
-   - 进入百炼控制台 → API-KEY管理
-   - 创建新的 API Key
-   - 复制并保存（只显示一次）
+3. **create API Key**
+   - Go to the ModelStudio Console → API Key Management
+   - create new API Key
 
-### Step 2: 配置环境变量
+### Step 2: Configure environment variables
 
 ```bash
 export DASHSCOPE_API_KEY="your-access-key"
 ```
 
-**Region Selection（地域选择）**
+**Region selection**
 
-根据所在地域选择合适的`DASHSCOPE_BASE_URL`
+Select the appropriate `DASHSCOPE_BASE_URL` based on your region.
 ```bash
-# 中国大陆（北京）- 默认
+# Chinese Mainland (Beijing) - default
 export DASHSCOPE_BASE_URL="https://dashscope.aliyuncs.com/api/v1/"
 
-# 新加坡（取消注释使用）
+# Singapore (Uncomment to use)
 # export DASHSCOPE_BASE_URL="https://dashscope-intl.aliyuncs.com/api/v1/"
 ```
 
-### Step 3: 安装
+### Step 3: Install skill
 
-clone本项目后，在AI Agent的对话框，指定安装对应的skill，以wan2.7-image-skill为例：
+After cloning this repo, specify the installation of the corresponding skill in the AI Agent's chat interface, using wan2.7-image-skill as an example:
 
-clone本项目
+clone this repo
 ```bash
 git clone https://github.com/Wan-Video/Wan-skills.git
 ```
 
-在AI Agent对话框指定skills路径进行安装
+Specify the skill path in the AI Agent chat interface for installation, where `/path/to/` is the actual local path on the user's machine.
 
 ```
-安装这个目录下的skill  /path/to/Wan-skills/skills/wan2.7-image-skill
+Install the skill from this directory  /path/to/Wan-skills/skills/wan2.7-image-skill
 ```
 
-## 📂 项目结构
+## 📂 Project Structure
 
 ```
 Wan-skills/
 ├── README.md
 ├── LICENSE
 └── skills/
-    └── wan2.7-image-skill/                     # wan2.7-image图像生成编辑技能
+    └── wan2.7-image-skill/                     # wan2.7-image image generation and editing skill
         ├── references
-        │   ├── common.md                       # 通用配置文档
-        │   └── image-generation-editing.md     # 详细用法文档
+        │   ├── common.md                       # General configuration documentation
+        │   └── image-generation-editing.md     # Detailed usage documentation
         ├── scripts
-        │   ├── check_wan_task_status.py        # 异步任务查询脚本
-        │   ├── file_to_oss.py                  # 文件上传脚本
-        │   ├── image-generation-editing.py     # 核心生成脚本
-        │   └── parse_resolution.py             # 分辨率解析脚本
-        └── SKILL.md                            # 技能描述文件
+        │   ├── check_wan_task_status.py        # Asynchronous task status query script
+        │   ├── file_to_oss.py                  # File upload script
+        │   ├── image-generation-editing.py     # Core generation script
+        │   └── parse_resolution.py             # Resolution parsing script
+        └── SKILL.md                            # Skill description file
 ```
+
+---
+
+## API Reference Documentation
+[Wan2.7 - image generation and editing](https://modelstudio.console.alibabacloud.com/ap-southeast-1?tab=api#/api/?type=model&url=3026980)
+
+---
+
+## Copyright 2025-2026 The Alibaba Wan Team Authors. All rights reserved.

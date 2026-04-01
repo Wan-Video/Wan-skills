@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 """
-check_wan_task_status - 使用task_id查询 DashScope API 异步任务的状态和最终结果
+check_wan_task_status -  Query the status and final result of a DashScope API asynchronous task using the task_id.
 """
 
 import os
 import sys
 import argparse
-from http import HTTPStatus
-from pathlib import Path
 import requests
-import time
+
 
 def _check_wan_task_status(task_id: str, headers: dict[str, str]) -> str:
     """Check task status until completion"""
@@ -49,21 +49,17 @@ def _check_wan_task_status(task_id: str, headers: dict[str, str]) -> str:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="使用task_id查询 DashScope API 异步任务的状态和最终结果")
-    
-    # 必需参数
-    parser.add_argument("--task_id", type=str, required=True, help="用于查询的task_id")
-    
+    parser = argparse.ArgumentParser(description="Query the status and final result of a DashScope API asynchronous task using the task_id")
+    parser.add_argument("--task_id", type=str, required=True, help="The task_id used for querying")
     args = parser.parse_args()
     
-    # 检查 API Key
     api_key = os.environ.get("DASHSCOPE_API_KEY")
     if not api_key:
-        print("❌ 错误：未设置 DASHSCOPE_API_KEY")
-        print("请设置环境变量：")
-        print("如果使用bash")
+        print("❌ Error: DASHSCOPE_API_KEY is not set")
+        print("Please set the environment variable: ")
+        print("If using bash")
         print("echo 'export DASHSCOPE_API_KEY=\"your-api-key-here\"' >> ~/.bashrc && source ~/.bashrc")
-        print("如果使用zsh")
+        print("If using zsh")
         print("echo 'export DASHSCOPE_API_KEY=\"your-api-key-here\"' >> ~/.zshrc && source ~/.zshrc")
         sys.exit(1)
     
@@ -81,17 +77,17 @@ def main():
             for rst_idx, rst_item in enumerate(content):
                 rst_type = rst_item.get('type', '')
                 if rst_type == 'image':
-                    print(f'第{rst_idx}个结果：', rst_item['image'])
-            print("\n🎉 生成成功！")
+                    print(f'result No. {rst_idx+1}', rst_item['image'])
+            print("\n🎉 Generation successful!")
         elif status == "RUNNING":
-            print(f"\n还在生成中，该任务是异步生成任务，后续可以通过task_id: {args.task_id}进行查询。")
+            print(f"\nStill running! This is an asynchronous generation task. You can later query its status using task_id: {args.task_id}.")
         
             
     except KeyboardInterrupt:
-        print("\n\n⚠️  用户中断操作")
+        print("\n\n⚠️  User interrupted the operation")
         sys.exit(0)
     except Exception as e:
-        print(f"\n❌ 程序执行出错: {e}")
+        print(f"\n❌ Program execution failed: {e}")
         sys.exit(1)
 
 

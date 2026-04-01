@@ -46,7 +46,8 @@ graph TB
    - **有分辨率和长宽比的需求**：执行 `scripts/parse_resolution.py` 获取size配置
 3. **调用生成脚本** - 调用 `scripts/image-generation-editing.py`，根据下述三种操作模式进行对应的参数填充
 4. **获取结果** - 从响应中提取图片 URL（有效期 24 小时）
-5. **展示结果** - 把图片URL为用户显示出来
+5. **展示结果** - 把图片URL在用户交互界面中显示出来
+6. **保存图片** - 提示用户图片结果链接有有效期，如果用户想长期保存结果，让用户指定一个目录，把图片存进这个目录
 
 📖 **详细流程与参数：** [image-generation-editing.md](references/image-generation-editing.md)
 
@@ -215,3 +216,7 @@ python scripts/check_wan_task_status.py "<task_id>"
 - 🐍 [file_to_oss.py](scripts/file_to_oss.py) - 本地文件上传脚本
 - 🐍 [parse_resolution.py](scripts/parse_resolution.py) - 解析用户输入的分辨率的脚本
 - 🐍 [image-generation-editing.py](scripts/image-generation-editing.py) - 文生图/图生图/编辑/组图生成的脚本
+
+---
+
+Copyright 2025-2026 The Alibaba Wan Team Authors. All rights reserved.

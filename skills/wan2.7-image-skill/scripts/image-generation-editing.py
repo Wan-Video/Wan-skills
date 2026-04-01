@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 """
-image-generation-editing - 使用 DashScope API 进行图片生成/图片编辑/组图生成
+image-generation-editing - Use the DashScope API for image generation, image editing, and image series generation.
 """
 
 import os
 import sys
 import argparse
-from http import HTTPStatus
-from pathlib import Path
 import requests
 import time
+
 
 def _poll_wan_task_status(task_id: str, headers: dict[str, str]) -> str:
     """Poll task status until completion"""
@@ -57,28 +58,27 @@ def _poll_wan_task_status(task_id: str, headers: dict[str, str]) -> str:
 
 def generate(user_requirement: str, input_images: list[str] = [], n: int = 1, size: str = '1K', enable_sequential: bool = False):
     """
-    使用 DashScope API 进行图片生成/图片编辑/组图生成
+    Use the DashScope API for image generation, image editing, and image series generation
 
     Args:
-        user_requirement: 用户的图片生成/图片编辑/组图生成需求
-        input_images: 输入的参考图片
-        n: 生成图片的数量
-        size: 生成图片的分辨率
-        enable_sequential: 是否开启组图生成
+        user_requirement: User's requirements for image generation, image editing, and image series generation
+        input_images: Input reference image
+        n: Number of images to generate
+        size: Resolution of the generated image
+        enable_sequential: Whether to enable image series generation
         
     Returns:
-        dict: 包含 success, content 等的结果字典
+        dict: A result dictionary containing fields such as "success" and "content"
     """
 
     try:
-        # 获取 API Key
         api_key = os.environ.get("DASHSCOPE_API_KEY")
         if not api_key:
             return {
                 "success": False,
                 "error": "API key not provided. Set DASHSCOPE_API_KEY environment variable"
             }
-        # 获取Base URL
+
         dashscope_base_url = os.environ.get("DASHSCOPE_BASE_URL", "https://dashscope.aliyuncs.com/api/v1/")
         api_url = f"{dashscope_base_url}services/aigc/image-generation/generation"
         headers = {
@@ -137,7 +137,7 @@ def generate(user_requirement: str, input_images: list[str] = [], n: int = 1, si
             for rst_idx, rst_item in enumerate(content):
                 rst_type = rst_item.get('type', '')
                 if rst_type == 'image':
-                    print(f'第{rst_idx}个结果：', rst_item['image'])
+                    print(f'result No. {rst_idx+1}: ', rst_item['image'])
 
             return {
                 "success": True,
@@ -153,35 +153,33 @@ def generate(user_requirement: str, input_images: list[str] = [], n: int = 1, si
             }
 
     except Exception as e:
-        print(f"❌ 生成过程中出错: {e}")
+        print(f"❌ Generation failed: {e}")
         return {
             "success": False,
-            "error": f"生成过程中出错: {e}"
+            "error": f"Generation failed: {e}"
         }
 
 
 def main():
-    parser = argparse.ArgumentParser(description="使用 DashScope API 进行图片生成/图片编辑/组图生成")
-    
-    # 必需参数
-    parser.add_argument("--user_requirement", type=str, required=True, help="用户的图片生成/图片编辑/组图生成需求")
-    
-    # 其他参数
-    parser.add_argument("--input_images", nargs='*', default=[], help="输入的参考图片")
-    parser.add_argument("--n", type=int, default=1, help="生成图片的数量")
-    parser.add_argument("--size", type=str, default='1K', help="生成图片的分辨率")
-    parser.add_argument("--enable_sequential", action="store_true", help="是否开启组图生成")
+    parser = argparse.ArgumentParser(description="Use the DashScope API for image generation, image editing, and image series generation")
+
+    parser.add_argument("--user_requirement", type=str, required=True, help="User's requirements for image generation, image editing, and image series generation")
+
+    parser.add_argument("--input_images", nargs='*', default=[], help="Input reference image")
+    parser.add_argument("--n", type=int, default=1, help="Number of images to generate")
+    parser.add_argument("--size", type=str, default='1K', help="Resolution of the generated image")
+    parser.add_argument("--enable_sequential", action="store_true", help="Whether to enable image series generation")
     
     args = parser.parse_args()
     
-    # 检查 API Key
+
     api_key = os.environ.get("DASHSCOPE_API_KEY")
     if not api_key:
-        print("❌ 错误：未设置 DASHSCOPE_API_KEY")
-        print("请设置环境变量：")
-        print("如果使用bash")
+        print("❌ Error: DASHSCOPE_API_KEY is not set")
+        print("Please set the environment variable: ")
+        print("If using bash")
         print("echo 'export DASHSCOPE_API_KEY=\"your-api-key-here\"' >> ~/.bashrc && source ~/.bashrc")
-        print("如果使用zsh")
+        print("If using zsh")
         print("echo 'export DASHSCOPE_API_KEY=\"your-api-key-here\"' >> ~/.zshrc && source ~/.zshrc")
         sys.exit(1)
     
@@ -198,19 +196,19 @@ def main():
         )
         
         if result["success"]:
-            print("\n🎉 生成成功！")
+            print("\n🎉 Generation successful!")
         else:
             if result['error'] == 'still running':
-                print(f"\n还在生成中，该任务是异步生成任务，后续可以通过task_id: {result['task_id']}进行查询。")
+                print(f"\nStill running! This is an asynchronous generation task. You can later query its status using task_id: {result['task_id']}")
             else:
-                print(f"\n❌ 生成失败: {result['error']}")
+                print(f"\n❌ Generation failed: {result['error']}")
                 sys.exit(1)
             
     except KeyboardInterrupt:
-        print("\n\n⚠️  用户中断操作")
+        print("\n\n⚠️  User interrupted the operation")
         sys.exit(0)
     except Exception as e:
-        print(f"\n❌ 程序执行出错: {e}")
+        print(f"\n❌ Program execution failed: {e}")
         sys.exit(1)
 
 
