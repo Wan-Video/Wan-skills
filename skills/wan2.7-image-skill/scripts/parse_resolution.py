@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# Copyright 2025-2026 The Alibaba Wan Team Authors. All rights reserved.
+
 """
 Resolution Parser for Wan 2.7 Image Generation
 

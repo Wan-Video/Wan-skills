@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# Copyright 2025-2026 The Alibaba Wan Team Authors. All rights reserved.
+
 """
 check_wan_task_status -  Query the status and final result of a DashScope API asynchronous task using the task_id.
 """

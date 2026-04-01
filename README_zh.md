@@ -87,7 +87,3 @@ Wan-skills/
 
 ## API 参考文档
 [万相-图像生成与编辑2.7](https://bailian.console.aliyun.com/cn-beijing?tab=api#/api/?type=model&url=3026980)
-
----
-
-## Copyright 2025-2026 The Alibaba Wan Team Authors. All rights reserved.

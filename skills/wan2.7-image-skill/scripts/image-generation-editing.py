@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# Copyright 2025-2026 The Alibaba Wan Team Authors. All rights reserved.
+
 """
 image-generation-editing - Use the DashScope API for image generation, image editing, and image series generation.
 """

@@ -42,7 +42,3 @@ export DASHSCOPE_BASE_URL="https://dashscope.aliyuncs.com/api/v1/"
 - 🐍 [file_to_oss.py](../scripts/file_to_oss.py) - 本地文件上传脚本
 - 🐍 [parse_resolution.py](../scripts/parse_resolution.py) - 解析用户输入的分辨率的脚本
 - 🐍 [image-generation-editing.py](../scripts/image-generation-editing.py) - 文生图/图生图/编辑/组图生成的脚本
-
----
-
-## Copyright 2025-2026 The Alibaba Wan Team Authors. All rights reserved.

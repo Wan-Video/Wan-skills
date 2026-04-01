@@ -233,7 +233,3 @@ python scripts/parse_resolution.py "<输入>"
 - 直接指定：`"1280*1280"`, `"2048*2048"`
 
 **输出：** 格式化的分辨率字符串（如 `1536*2048`）
-
----
-
-## Copyright 2025-2026 The Alibaba Wan Team Authors. All rights reserved.
