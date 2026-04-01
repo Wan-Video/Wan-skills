@@ -236,4 +236,4 @@ python scripts/parse_resolution.py "<输入>"
 
 ---
 
-Copyright 2025-2026 The Alibaba Wan Team Authors. All rights reserved.
+## Copyright 2025-2026 The Alibaba Wan Team Authors. All rights reserved.

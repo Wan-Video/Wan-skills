@@ -219,4 +219,4 @@ python scripts/check_wan_task_status.py "<task_id>"
 
 ---
 
-Copyright 2025-2026 The Alibaba Wan Team Authors. All rights reserved.
+## Copyright 2025-2026 The Alibaba Wan Team Authors. All rights reserved.
