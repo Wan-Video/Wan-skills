@@ -9,6 +9,7 @@
 | name | description | scripts | refenence |
 |------|------|------|------|
 | **wan2.7-image-skill** | Create content using the image generation and editing capabilities of the wan2.7-image model. | `image-generation-editing.py` `file_to_oss.py` `parse_resolution.py` `check_wan_task_status.py` | `common.md` `image-generation-editing.md` |
+| **wan-pptx-generator** | Convert documents, text, or topic descriptions into professional PowerPoint slides enriched with AI-generated images. Powered by qwen-doc-turbo and wan2.7-image models. | pptx_generator.py | - |
 
 Continuously update the skill list with a variety of new skills.
 
@@ -68,10 +69,15 @@ Install the skill from this directory  /path/to/Wan-skills/skills/wan2.7-image-s
 
 ```
 Wan-skills/
+├── LICENSE.txt
+├── README_zh.md
 ├── README.md
-├── LICENSE
-└── skills/
-    └── wan2.7-image-skill/                     # wan2.7-image image generation and editing skill
+└── skills
+    ├── wan-pptx-generator                      # wan-pptx-generator PPT generation skill
+    │   ├── scripts
+    │   │   └── pptx_generator.py               # Core generation script
+    │   └── SKILL.md                            # Skill description file
+    └── wan2.7-image-skill                      # wan2.7-image image generation and editing skill
         ├── references
         │   ├── common.md                       # General configuration documentation
         │   └── image-generation-editing.md     # Detailed usage documentation
@@ -86,6 +92,6 @@ Wan-skills/
 ---
 
 ## API Reference Documentation
-[Wan2.7 - image generation and editing](https://modelstudio.console.alibabacloud.com/ap-southeast-1?tab=api#/api/?type=model&url=3026980)
+English documentation: [Wan2.7 - image generation and editing](https://modelstudio.console.alibabacloud.com/ap-southeast-1?tab=api#/api/?type=model&url=3026980)
 
-[万相-图像生成与编辑2.7](https://bailian.console.aliyun.com/cn-beijing?tab=api#/api/?type=model&url=3026980)
+中文版文档：[万相-图像生成与编辑2.7](https://bailian.console.aliyun.com/cn-beijing?tab=api#/api/?type=model&url=3026980)

@@ -9,6 +9,7 @@
 | 技能 | 描述 | 脚本 | 参考 |
 |------|------|------|------|
 | **wan2.7-image-skill** | 通过wan2.7-image模型的图像生成和编辑能力进行创作 | `image-generation-editing.py` `file_to_oss.py` `parse_resolution.py` `check_wan_task_status.py` | `common.md` `image-generation-editing.md` |
+| **wan-pptx-generator** | 基于 qwen-doc-turbo 与 wan2.7-image 模型，支持将文档、文本或主题描述自动转换为带有 AI 生成图片的专业 PPT 幻灯片 | pptx_generator.py | - |
 
 将持续更新多种技能到技能列表。
 
@@ -68,10 +69,15 @@ git clone https://github.com/Wan-Video/Wan-skills.git
 
 ```
 Wan-skills/
+├── LICENSE.txt
+├── README_zh.md
 ├── README.md
-├── LICENSE
-└── skills/
-    └── wan2.7-image-skill/                     # wan2.7-image图像生成编辑技能
+└── skills
+    ├── wan-pptx-generator                      # wan-pptx-generator PPT生成技能
+    │   ├── scripts
+    │   │   └── pptx_generator.py               # 核心生成脚本
+    │   └── SKILL.md                            # 技能描述文件
+    └── wan2.7-image-skill                      # wan2.7-image图像生成编辑技能
         ├── references
         │   ├── common.md                       # 通用配置文档
         │   └── image-generation-editing.md     # 详细用法文档
